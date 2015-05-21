@@ -17,6 +17,14 @@ float[] circleX =
   random(0, 600), random(0, 600), random(0, 600), random(0, 600), random(0, 600)
   };
 
+  //
+  // Function to find distance between two points and detect hits
+  //
+  static float distance(float x, float circleX, float y, float circleY)
+  {
+    return sqrt((x - circleX) * (x - circleX) + (y - circleY) * (y - circleY));
+  }
+
 float x = 250f; // X value of player circle
 float y = 300f; // Y value of player circle
 void setup()
@@ -30,7 +38,7 @@ void draw()
   background(0); // Set background colour
   translate(0, height); // Invert ordinate
   scale(1, -1);
-  
+
   //
   // Draw smaller circles
   //
@@ -49,7 +57,7 @@ void draw()
   ellipse(circleX[12], circleY[12], BDIAM, BDIAM);
   ellipse(circleX[13], circleY[13], BDIAM, BDIAM);
   ellipse(circleX[14], circleY[14], BDIAM, BDIAM);
-  
+
   ellipse(x, y, DIAM, DIAM); // Draw player circle
 
   //
