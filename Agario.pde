@@ -2,6 +2,19 @@ private static final int W = 500;          // Width of canvas
 private static final int H = 600;          // Height of canvas
 private static float DIAM = 35f;           // Diameter of ball
 
+//
+// Create x and y values for smaller circles
+//
+float[] circleX = 
+{
+  random(0, 500), random(0, 500), random(0, 500), random(0, 500), random(0, 500), random(0, 500), random(0, 500), random(0, 500), random(0, 500), random(0, 500), 
+  random(0, 500), random(0, 500), random(0, 500), random(0, 500), random(0, 500)
+  };
+  float[] circleY =
+{
+  random(0, 600), random(0, 600), random(0, 600), random(0, 600), random(0, 600), random(0, 600), random(0, 600), random(0, 600), random(0, 600), random(0, 600), 
+  random(0, 600), random(0, 600), random(0, 600), random(0, 600), random(0, 600)
+  };
 
 float x = 250f; // X value of player circle
 float y = 300f; // Y value of player circle
