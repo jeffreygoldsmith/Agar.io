@@ -60,6 +60,114 @@ void draw()
 
   ellipse(x, y, DIAM, DIAM); // Draw player circle
 
+//
+  // Check for hits
+  //
+  if (distance(x, circleX[0], y, circleY[0]) <= DIAM / 2)
+  {
+    circleX[0] = random(0, 500);
+    circleY[0] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[1], y, circleY[1]) <= DIAM / 2)
+  {
+    circleX[1] = random(0, 500);
+    circleY[1] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[2], y, circleY[2]) <= DIAM / 2)
+  {
+    circleX[2] = random(0, 500);
+    circleY[2] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[3], y, circleY[3]) <= DIAM / 2)
+  {
+    circleX[3] = random(0, 500);
+    circleY[3] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[4], y, circleY[4]) <= DIAM / 2)
+  {
+    circleX[4] = random(0, 500);
+    circleY[4] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[5], y, circleY[5]) <= DIAM / 2)
+  {
+    circleX[5] = random(0, 500);
+    circleY[5] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[6], y, circleY[6]) <= DIAM / 2)
+  {
+    circleX[6] = random(0, 500);
+    circleY[6] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[7], y, circleY[7]) <= DIAM / 2)
+  {
+    circleX[7] = random(0, 500);
+    circleY[7] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[8], y, circleY[8]) <= DIAM / 2)
+  {
+    circleX[8] = random(0, 500);
+    circleY[8] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[9], y, circleY[9]) <= DIAM / 2)
+  {
+    circleX[9] = random(0, 500);
+    circleY[9] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[10], y, circleY[10]) <= DIAM / 2)
+  {
+    circleX[10] = random(0, 500);
+    circleY[10] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[11], y, circleY[11]) <= DIAM / 2)
+  {
+    circleX[11] = random(0, 500);
+    circleY[11] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[12], y, circleY[12]) <= DIAM / 2)
+  {
+    circleX[12] = random(0, 500);
+    circleY[12] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[13], y, circleY[13]) <= DIAM / 2)
+  {
+    circleX[13] = random(0, 500);
+    circleY[13] = random(0, 600);
+    DIAM += 2;
+  }
+
+  if (distance(x, circleX[14], y, circleY[14]) <= DIAM / 2)
+  {
+    circleX[14] = random(0, 500);
+    circleY[14] = random(0, 600);
+    DIAM += 2;
+  }
+
   //
   // Detect for key press and move player on screen accordingly
   //
