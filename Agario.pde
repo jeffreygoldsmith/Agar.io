@@ -3,6 +3,10 @@ private static final int H = 600;          // Height of canvas
 private static final float BDIAM = 15f;    // Diameter of little balls
 private static float DIAM = 35f;           // Diameter of ball
 
+
+float x = 250f; // X value of player circle
+float y = 300f; // Y value of player circle
+
 //
 // Create x and y values for smaller circles
 //
@@ -25,8 +29,6 @@ float[] circleX =
     return sqrt((x - circleX) * (x - circleX) + (y - circleY) * (y - circleY));
   }
 
-float x = 250f; // X value of player circle
-float y = 300f; // Y value of player circle
 void setup()
 {
   size(W, H);
@@ -35,13 +37,14 @@ void setup()
 
 void draw()
 {
-  background(0); // Set background colour
+  background(85, 20, 250); // Set background colour
   translate(0, height); // Invert ordinate
   scale(1, -1);
 
   //
   // Draw smaller circles
   //
+  fill(213);
   ellipse(circleX[0], circleY[0], BDIAM, BDIAM);
   ellipse(circleX[1], circleY[1], BDIAM, BDIAM);
   ellipse(circleX[2], circleY[2], BDIAM, BDIAM);
@@ -58,9 +61,11 @@ void draw()
   ellipse(circleX[13], circleY[13], BDIAM, BDIAM);
   ellipse(circleX[14], circleY[14], BDIAM, BDIAM);
 
+  fill(190, 60, 220);
   ellipse(x, y, DIAM, DIAM); // Draw player circle
 
-//
+
+  //
   // Check for hits
   //
   if (distance(x, circleX[0], y, circleY[0]) <= DIAM / 2)
