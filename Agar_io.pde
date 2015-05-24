@@ -7,8 +7,8 @@ private static float DIAM = 35f;           // Diameter of ball
 PFont font;
 float x = 250f; // X value of player circle
 float y = 300f; // Y value of player circle
-float cosAngle = cos(random(0, PI)); // Random angle between 0 and pie
-float sinAngle = sin(random(0, PI));
+float cosAngle = cos(random(0, PI)) + 2; // Random angle between 0 and pie
+float sinAngle = sin(random(0, PI)) + 2;
 boolean isAuto;
 boolean direction;
 
@@ -84,16 +84,16 @@ void draw()
   // if ( isAuto == true)
   // {
 
-    x += cosAngle;
-    y += sinAngle;
-    
-    if (x >= W - DIAM / 2 || x <= DIAM / 2)
+  x += cosAngle;
+  y += sinAngle;
+
+  if (x >= W - DIAM / 2 || x <= DIAM / 2)
     cosAngle = -cosAngle;
-    
-    if (y >= H - DIAM / 2|| y <= DIAM / 2)
+
+  if (y >= H - DIAM / 2|| y <= DIAM / 2)
     sinAngle = -sinAngle;
-    
- // } 
+
+  // } 
   // else
   // {
   //   //
