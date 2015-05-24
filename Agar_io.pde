@@ -7,6 +7,7 @@ private static float DIAM = 35f;           // Diameter of ball
 PFont font;
 float x = 250f; // X value of player circle
 float y = 300f; // Y value of player circle
+boolean isAuto;
 
 //
 // Create x and y values for smaller circles
@@ -26,7 +27,10 @@ void setup()
 {
   size(W, H);
   noStroke();
-
+  
+  isAuto = keyPressed && keyCode == SHIFT;
+  
+  
   circles = new float[NUM_CIRCLES][2];
 
   for (int i = 0; i < NUM_CIRCLES; i++)
@@ -39,6 +43,8 @@ void setup()
 void draw()
 {
   background(85, 20, 250); // Set background colour
+  
+  
 
   //
   // Draw smaller circles
