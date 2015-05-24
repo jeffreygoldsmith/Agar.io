@@ -11,7 +11,7 @@ private static final int RECT_X_SIZE = 180;      // Rectangle size x
 private static final int RECT_Y_SIZE = 60;       // Rectangle size y
 private static final int RECT_CURVE_SIZE = 7;    // Corner curvature of the rectangle
 private static final float BDIAM = 15f;          // Diameter of little balls 
-private static float DIAM = 450f;                // Diameter of ball
+private static float DIAM = 35f;                 // Diameter of ball
 
 PFont font;
 float x = 250f; // X value of player circle
@@ -21,7 +21,7 @@ float sinAngle = sin(random(0, PI)) + 2; // Random angle between 0 and PI for y 
 boolean isAuto; // Boolean to detect when to run autorun
 
 //
-// Create x and y values for smaller circles
+// Create array that holds x and y values for smaller circles
 //
 float[][] circles; 
 
@@ -36,10 +36,13 @@ static float distance(float x, float circleX, float y, float circleY)
 
 void setup()
 {
-  size(W, H);
-  noStroke();
+  size(W, H); // Create canvas
+  noStroke(); // No borders on objects
 
-  circles = new float[NUM_CIRCLES][2];
+  //
+  // Set array to hold x and y values of smaller circles
+  //
+  circles = new float[NUM_CIRCLES][2]; 
 
   for (int i = 0; i < NUM_CIRCLES; i++)
   {
@@ -57,12 +60,12 @@ void draw()
   //
   // Draw smaller circles
   //
-  fill(213);
+  fill(213); // Set colour of smaller circles
 
   for (int i = 0; i < NUM_CIRCLES; i++)
     ellipse(circles[i][0], circles[i][1], BDIAM, BDIAM);
 
-  fill(190, 60, 220);
+  fill(190, 60, 220); // Set colour of player circle
   ellipse(x, y, DIAM, DIAM); // Draw player circle
 
   //
@@ -76,13 +79,17 @@ void draw()
       DIAM += 2;
     }
 
-  fill(0);
-
+  //
+  // Display "Mass is:" text
+  //
+  fill(0); // Set colour of "Mass is: " font
   font = createFont("Source Sans Pro", 30);
   textFont(font);
   text("Mass is: " + DIAM, 5, 50);
 
-
+  //
+  // Choose between player or AI control
+  // 
   if ( isAuto == true)
   {
     x += cosAngle;
@@ -93,7 +100,8 @@ void draw()
 
     if (y >= H - DIAM / 2|| y <= DIAM / 2)
       sinAngle = -sinAngle;
-  } else
+  } 
+  else
   {
     //
     // Detect for key press and move player on screen accordingly
@@ -114,28 +122,38 @@ void draw()
     }
   }
 
+  //
+  // Display "You win!" and "Play again?" text
+  //
   if (DIAM >= 700)
   {
     background(190, 60, 220);
 
     //
-    // Display "You Win!" text
+    // Display "You win!" text
     //
     fill(255); // Change colour to white
     font = createFont("Source Sans Pro", 50); // Change font size
     textFont(font);
-    text("You Win!", T_WIN_X, T_WIN_Y); // Display "You Win!"
+    text("You win!", T_WIN_X, T_WIN_Y); // Display "You Win!"
 
     //
-    // Display "Play Again?"
+    // Display "Play again?"
     //
     rect(RECT_X, RECT_Y, RECT_X_SIZE, RECT_Y_SIZE, RECT_CURVE_SIZE); // Create rectangle
     fill(0); // Change colour to black
     font = createFont("Source Sans Pro", 35); // Change font size
     textFont(font);
-    text("Play Again?", T_AGAIN_X, T_AGAIN_Y); // Display "Play Again?"
-  }
+    text("Play again?", T_AGAIN_X, T_AGAIN_Y); // Display "Play Again?"
 
-  if (mousePressed && mouseX <= RECT_X + RECT_X_SIZE / 2 && mouseX >= RECT_X - RECT_X_SIZE / 2 && mouseY >= RECT_Y - RECT_Y_SIZE / 2 && mouseY <= RECT_Y + RECT_Y_SIZE / 2)
-    DIAM = 35;
+    //
+    // Check whether or not player is clicking "Play again?" and reset game if true
+    //
+    if (mousePressed && mouseX <= RECT_X + RECT_X_SIZE / 2 && mouseX >= RECT_X - RECT_X_SIZE / 2 && mouseY >= RECT_Y - RECT_Y_SIZE / 2 && mouseY <= RECT_Y + RECT_Y_SIZE / 2)
+    {
+      DIAM = 35;
+      x = 250;
+      y = 300;
+    }
+  }
 }
