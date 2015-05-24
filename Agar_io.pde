@@ -7,7 +7,10 @@ private static float DIAM = 35f;           // Diameter of ball
 PFont font;
 float x = 250f; // X value of player circle
 float y = 300f; // Y value of player circle
+float cosAngle = cos(random(0, PI)); // Random angle between 0 and pie
+float sinAngle = sin(random(0, PI));
 boolean isAuto;
+boolean direction;
 
 //
 // Create x and y values for smaller circles
@@ -27,24 +30,23 @@ void setup()
 {
   size(W, H);
   noStroke();
-  
-  isAuto = keyPressed && keyCode == SHIFT;
-  
-  
+
+  isAuto = keyPressed && keyCode == CONTROL;
+
   circles = new float[NUM_CIRCLES][2];
 
   for (int i = 0; i < NUM_CIRCLES; i++)
   {
     circles [i][0] = random(0, 500);
-    circles [i][1] = random(0, 500);
+    circles [i][1] = random(100, 600);
   }
 }
 
 void draw()
 {
   background(85, 20, 250); // Set background colour
-  
-  
+
+
 
   //
   // Draw smaller circles
@@ -64,31 +66,52 @@ void draw()
     if (distance(x, circles[i][0], y, circles[i][1]) <= DIAM / 2)
     {
       circles[i][0] = random(0, W);
-      circles[i][1] = random(100, 500);
+      circles[i][1] = random(100, 600);
       DIAM += 2;
     }
 
   fill(0);
-  
-  font = createFont("Source Sans Pro", 22);
+
+  font = createFont("Source Sans Pro", 30);
   textFont(font);
-  text("Mass is: " + DIAM, 300, 50);
+  text("Mass is: " + DIAM, 5, 50);
+  font = createFont("Source Sans Pro", 15);
+  textFont(font);
+  text("X = " + x, 200, 50);
+  text("Y = " + y, 400, 50);
 
-  //
-  // Detect for key press and move player on screen accordingly
-  //
-  if (keyPressed)
-  {
-    if (key == 'w' || keyCode == UP)
-      y -= 3;
 
-    if (key == 's' || keyCode == DOWN)
-      y += 3;
+  // if ( isAuto == true)
+  // {
 
-    if (key == 'd' || keyCode == RIGHT)
-      x += 3;
+    x += cosAngle;
+    y += sinAngle;
+    
+    if (x >= W - DIAM / 2 || x <= DIAM / 2)
+    cosAngle = -cosAngle;
+    
+    if (y >= H - DIAM / 2|| y <= DIAM / 2)
+    sinAngle = -sinAngle;
+    
+ // } 
+  // else
+  // {
+  //   //
+  //   // Detect for key press and move player on screen accordingly
+  //   //
+  //   if (keyPressed)
+  //   {
+  //     if (key == 'w' || keyCode == UP)
+  //       y -= 3;
 
-    if (key == 'a' || keyCode == LEFT)
-      x -= 3;
-  }
+  //     if (key == 's' || keyCode == DOWN)
+  //       y += 3;
+
+  //     if (key == 'd' || keyCode == RIGHT)
+  //       x += 3;
+
+  //     if (key == 'a' || keyCode == LEFT)
+  //       x -= 3;
+  //   }
+  // }
 }
