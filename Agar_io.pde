@@ -12,6 +12,7 @@ private static final int RECT_Y_SIZE = 60;       // Rectangle size y
 private static final int RECT_CURVE_SIZE = 7;    // Corner curvature of the rectangle
 private static final float BDIAM = 15f;          // Diameter of little balls 
 private static float DIAM = 35f;                 // Diameter of ball
+private static final float RAD = DIAM / 2f;      // Radius of ball
 
 PFont font;
 float x = 250f; // X value of player circle
@@ -90,15 +91,18 @@ void draw()
   //
   // Choose between player or AI control
   // 
-  if ( isAuto == true)
+  if (isAuto == true)
   {
     x += cosAngle;
     y += sinAngle;
 
-    if (x >= W - DIAM / 2 || x <= DIAM / 2)
+    //
+    // When player hits an edge, use new angle and change direction
+    //
+    if (x >= W - RAD || x <= RAD)
       cosAngle = -cosAngle;
-
-    if (y >= H - DIAM / 2|| y <= DIAM / 2)
+    
+    if (y >= H - RAD || y <= RAD)
       sinAngle = -sinAngle;
   } 
   else
@@ -108,16 +112,16 @@ void draw()
     //
     if (keyPressed)
     {
-      if (key == 'w' || keyCode == UP)
+      if (key == 'w' || key == 'W' || keyCode == UP)
         y -= 3;
 
-      if (key == 's' || keyCode == DOWN)
+      if (key == 's' || key == 'S' || keyCode == DOWN)
         y += 3;
 
-      if (key == 'd' || keyCode == RIGHT)
+      if (key == 'd' || key == 'D' || keyCode == RIGHT)
         x += 3;
 
-      if (key == 'a' || keyCode == LEFT)
+      if (key == 'a' || key == 'A' || keyCode == LEFT)
         x -= 3;
     }
   }
